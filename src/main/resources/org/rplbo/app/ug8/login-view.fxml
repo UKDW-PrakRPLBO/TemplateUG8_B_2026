@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="237.0" prefWidth="320.0" spacing="15.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.rplbo.app.ug8.Controller.LoginController">
+
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+    </padding>
+
+    <Label text="UMBRELLA CORP - SECTOR B">
+        <font>
+            <Font name="System Bold" size="16.0" />
+        </font>
+    </Label>
+
+    <VBox maxWidth="250.0" spacing="5.0">
+        <children>
+            <Label text="OPERATIVE ID:" />
+            <TextField fx:id="txtUsername" promptText="Enter Username" />
+        </children>
+    </VBox>
+
+    <VBox maxWidth="250.0" spacing="5.0">
+        <children>
+            <Label text="PASSCODE:" />
+            <PasswordField fx:id="txtPassword" promptText="Enter Password" />
+        </children>
+    </VBox>
+
+    <Button minHeight="35.0" onAction="#handleLogin" prefWidth="250.0" text="AUTHENTICATE" />
+
+    <Label fx:id="lblStatus" textFill="#e40a0a">
+        <font>
+            <Font name="System Italic" size="12.0" />
+        </font>
+    </Label>
+</VBox>
