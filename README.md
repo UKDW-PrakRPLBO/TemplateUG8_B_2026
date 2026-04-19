@@ -16,3 +16,13 @@ Lengkapilah program terminal inventaris pasokan Umbrella Corporation (Sector B) 
 - **Delete Data Inventaris:** Untuk menghapus data, user terlebih dahulu memilih item yang ingin dihapus dengan mengeklik salah satu baris pada tabel, lalu menekan tombol hapus. Disarankan untuk memunculkan pesan konfirmasi (*Confirmation Dialog Box*) sebelum menghapus. Jika disetujui, data akan dihapus secara permanen dari sistem database dan hilang dari tampilan tabel.
 
 - **Database:** Seluruh data aplikasi (baik *users* maupun *inventory*) harus dikelola dan disimpan di dalam **SQLite** (`umbrella_inventory_b.db`).
+
+### Daftar Method yang Perlu Dilengkapi (TODO)
+
+**1. `LoginController.java`**
+- [ ] `handleLogin()` : Mengambil input *username* dan *password*, lalu memvalidasinya menggunakan *database manager* sebelum masuk ke sistem.
+
+**2. `UmbrellaController.java`**
+- [ ] `handleAdd()` : Melengkapi logika untuk mengambil inputan form, menghitung stok otomatis, dan menyimpan data baru ke *database*.
+- [ ] `handleSave()` : Melengkapi logika untuk memperbarui (*update*) data item yang dipilih dan menghitung ulang stok terbarunya.
+- [ ] `handleDelete()` : Melengkapi logika penghapusan data dari sistem beserta tampilan konfirmasinya.
