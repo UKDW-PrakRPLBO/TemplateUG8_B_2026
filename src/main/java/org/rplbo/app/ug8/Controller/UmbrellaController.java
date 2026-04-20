@@ -24,41 +24,53 @@ public class UmbrellaController implements Initializable {
     private ObservableList<InventoryItem> masterData = FXCollections.observableArrayList();
     private InventoryItem selectedItem;
 
-    @FXML
-    private void handleLogout() {
-        try {
-            UmbrellaApp.switchScene("login-view.fxml");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         db = new UmbrellaDBManager();
         System.out.println("LOG: OPERATIVE " + UmbrellaApp.loggedInUser + " ACCESS GRANTED.");
 
-        colName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
-        colInitial.setCellValueFactory(new PropertyValueFactory<>("initialStock"));
-        colSupply.setCellValueFactory(new PropertyValueFactory<>("newSupply"));
-        colFinal.setCellValueFactory(new PropertyValueFactory<>("finalStock"));
+        // ==============================================================================
+        // TODO 1: MENGHUBUNGKAN KOLOM TABEL (TABLE COLUMN MAPPING)
+        // ==============================================================================
+        // Hubungkan setiap TableColumn (colName, colInitial, colSupply, colFinal)
+        // dengan nama atribut (property) yang sesuai di dalam class InventoryItem.
+        // Gunakan setCellValueFactory() dan new PropertyValueFactory<>().
+        // ==============================================================================
+
+        // --- TULIS KODE ANDA DI BAWAH INI ---
+
+
+
+
+        // ==============================================================================
+        // TODO 2: LISTENER KLIK BARIS TABEL (SELECTION MODEL)
+        // ==============================================================================
+        // Lengkapi logika di dalam listener di bawah ini:
+        // 1. Masukkan objek 'newVal' ke dalam variabel global 'selectedItem'.
+        // 2. Tampilkan nilai itemName dari newVal ke dalam TextField 'txtItem'.
+        // 3. Tampilkan nilai initialStock dari newVal ke dalam TextField 'txtInitial'.
+        // 4. Tampilkan nilai newSupply dari newVal ke dalam TextField 'txtSupply'.
+        //    (Ingat: Ubah tipe data angka menjadi String menggunakan String.valueOf).
+        // 5. Matikan (disable) TextField 'txtItem' agar pengguna tidak bisa mengubah
+        //    nama item (Primary Key) saat sedang mengedit data.
+        // ==============================================================================
 
         tableInventory.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
-                selectedItem = newVal;
-                txtItem.setText(newVal.getItemName());
-                txtInitial.setText(String.valueOf(newVal.getInitialStock()));
-                txtSupply.setText(String.valueOf(newVal.getNewSupply()));
-                txtItem.setDisable(true);
+                // --- TULIS KODE ANDA DI BAWAH INI ---
+
+
+
             }
         });
+
         refreshTable();
     }
 
     @FXML
     private void handleSave() {
         // ==============================================================================
-        // TODO 1: LOGIKA PERBARUI/UPDATE DATA (GRUP B)
+        // TODO 3: LOGIKA PERBARUI/UPDATE DATA
         // ==============================================================================
         // 1. Pastikan ada item yang dipilih (cek apakah selectedItem tidak sama dengan null).
         // 2. Ambil nilai teks terbaru dari txtInitial dan txtSupply, lalu ubah menjadi Integer.
@@ -79,7 +91,7 @@ public class UmbrellaController implements Initializable {
     @FXML
     private void handleAdd() {
         // ==============================================================================
-        // TODO 2: LOGIKA TAMBAH DATA (GRUP B)
+        // TODO 4: LOGIKA TAMBAH DATA
         // ==============================================================================
         // 1. Ambil nilai teks dari txtInitial dan txtSupply, lalu ubah menjadi Integer.
         // 2. HITUNG FINAL STOCK:
@@ -98,7 +110,7 @@ public class UmbrellaController implements Initializable {
     @FXML
     private void handleDelete() {
         // ==============================================================================
-        // TODO 3: LOGIKA HAPUS DATA (Sama dengan Grup A)
+        // TODO 5: LOGIKA HAPUS DATA
         // ==============================================================================
         // 1. Ambil item yang sedang dipilih oleh user di tableInventory.
         // 2. Cek jika item tersebut ada (tidak null):
@@ -115,6 +127,17 @@ public class UmbrellaController implements Initializable {
 
     }
 
+    // Logout
+    @FXML
+    private void handleLogout() {
+        try {
+            UmbrellaApp.switchScene("login-view.fxml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Bersihkan Text Fields
     @FXML
     private void clearFields() {
         txtItem.clear();
@@ -124,6 +147,7 @@ public class UmbrellaController implements Initializable {
         selectedItem = null;
     }
 
+    // Refresh Table
     @FXML
     private void refreshTable() {
         masterData.setAll(db.getAllItems());
