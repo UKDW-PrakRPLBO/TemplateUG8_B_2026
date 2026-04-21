@@ -13,20 +13,20 @@ public class LoginController {
 
     @FXML
     private void handleLogin(ActionEvent event) {
-        String user = txtUsername.getText();
-        String pass = txtPassword.getText();
+        // ==============================================================================
+        // TODO 1: PROSES AUTENTIKASI (LOGIN)
+        // ==============================================================================
+        // 1. Ambil input teks dari txtUsername dan txtPassword.
+        // 2. Buat instansiasi dari class UmbrellaDBManager.
+        // 3. Panggil metode validateUser() dari db manager tersebut.
+        // 4. Jika hasil validasi berhasil (tidak null):
+        //    a. Simpan nama user ke variabel statis UmbrellaApp.loggedInUser.
+        //    b. Pindah ke halaman "umbrella-view.fxml" menggunakan UmbrellaApp.switchScene().
+        // 5. Jika gagal, tampilkan pesan error "AUTHENTICATION FAILED" pada lblStatus.
+        // ==============================================================================
 
-        UmbrellaDBManager db = new UmbrellaDBManager();
-        String fullName = db.validateUser(user, pass);
+        // --- TULIS KODE ANDA DI BAWAH INI ---
 
-        if (fullName != null) {
-            // Simpan nama user ke "Session" global di App
-            UmbrellaApp.loggedInUser = fullName;
-            try {
-                UmbrellaApp.switchScene("umbrella-view.fxml");
-            } catch (Exception e) { e.printStackTrace(); }
-        } else {
-            lblStatus.setText("AUTHENTICATION FAILED: UNKNOWN ENTITY");
-        }
+
     }
 }
